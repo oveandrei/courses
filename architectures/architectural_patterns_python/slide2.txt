@@ -1,0 +1,30 @@
+
+
+----------------------------
+|   Pattern Categories     |
+----------------------------
+|  Creational | Singleton, Factory, Abstract Factory, Builder   |
+|  Structural | Adapter, Composite                              |
+|  Behavioral | Observer                                        |
+|  Modern     | MVC, Repository, CQRS, Microservices, etc.      |
+-----------------------------
+
+# Tree Diagram for Visual Learners
+
+Patterns
+├── Creational
+│   ├── Singleton
+│   ├── Factory
+│   ├── Abstract Factory
+│   └── Builder
+├── Structural
+│   ├── Adapter
+│   └── Composite
+├── Behavioral
+│   └── Observer
+└── Modern
+    ├── MVC
+    ├── Repository
+    ├── CQRS
+    └── ...
+
