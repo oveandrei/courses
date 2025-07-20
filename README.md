@@ -4,12 +4,8 @@ s
 
 ## Courses
 
-s
+**Course** - ..
 
-## Structure of Folders
+**Exercises** - ..
 
-.
-
-## Reference links
-
-s
+**Videos** - ..
