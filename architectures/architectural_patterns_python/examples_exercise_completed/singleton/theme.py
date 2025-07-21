@@ -1,6 +1,11 @@
-from singleton import SingletonMeta
-"""A module where we implement the logic of the Theme class."""
+"""A module where we implement the logic of the Theme class.
 
+Notes:
+    Instead of initializing attributes in __init__ you can also use ClassVar from typing
+        or a @dataclass decorator.
+"""
+
+from singleton import SingletonMeta
 
 class Theme(metaclass=SingletonMeta):
     def __init__(self):

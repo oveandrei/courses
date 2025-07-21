@@ -6,9 +6,6 @@ Please check theme.py comments"""
 
 from singleton import SingletonMeta
 
-
-
-
 class Language(metaclass=SingletonMeta):
     def __init__(self):
         self._language: str = 'english'

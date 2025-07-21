@@ -2,14 +2,10 @@ from theme import Theme
 from language import Language
 from singleton import SingletonMeta
 
-
-
-
 class Config(metaclass=SingletonMeta):
     def __init__(self):
         self.language = Language() # We initialize the Language class containing the languages
         self.theme = Theme() # We initialize the Theme class containing the themes
-    
     
     def read_values(self):
         """
@@ -51,10 +47,6 @@ class Config(metaclass=SingletonMeta):
             else:
                 print("Your answer is not a correct answer.... Please choose a valid number")
 
-
-
-
-
 if __name__ == "__main__":
     # Instantiate the class multiple times
     c1 = Config()
@@ -65,7 +57,7 @@ if __name__ == "__main__":
 
     # Check for the initial settings
     print(c1.read_values())
-    
+
     # Initialize the __call__ in Config
     c1()
 

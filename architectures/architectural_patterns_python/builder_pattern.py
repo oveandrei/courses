@@ -1,4 +1,3 @@
-
 from typing import Optional
 
 # A product class representing a complex object

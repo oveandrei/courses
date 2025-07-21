@@ -2,7 +2,6 @@
 This class will act as the singleton pattern to all classes in this exercise to ensure both the system and the subsystems are treated as singleton
 """
 
-
 # Define a metaclass that controls the instantiation process
 class SingletonMeta(type):
     _instance = None  # This will store the single instance of the class
