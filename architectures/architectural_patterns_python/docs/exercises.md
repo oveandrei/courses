@@ -77,7 +77,7 @@
 
 ### MRP - Adapter
 
-**Legacy Printer Integration** - You have a new app that expects all printers to use the ```print(text: str)``` method. However, a legacy printer class uses ```old_print(text: str)```.
+**Legacy Printer Integration** - You have a new app that expects all printers to use the ```prnt(text: str)``` method. However, a legacy printer class uses ```old_prnt(text: str)```.
 
 ### Requirements - Adapter
 
@@ -87,7 +87,7 @@
 ### Required Usage - Adapter
 
 * Use the [Adapter Pattern](../adapter_pattern.py) to wrap the legacy printer class.
-* Implement an adapter that maps ```print()``` calls to the legacy ```old_print()``` method.
+* Implement an adapter that maps ```prnt()``` calls to the legacy ```old_prnt()``` method.
 
 ---
 
