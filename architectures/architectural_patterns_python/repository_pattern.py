@@ -1,51 +1,109 @@
-from typing import List
+from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import List, Optional
 
-# --- Domain Entity ---
-class User:
-    def __init__(self, user_id: int, name: str):
-        self.user_id = user_id
-        self.name = name
+# --- Model ---
+@dataclass
+class Book:
+    id: int
+    title: str
+    author: str
 
 # --- Repository Interface ---
-class UserRepository:
+class BookRepository(ABC):
+    @abstractmethod
+    def get_by_id(self, book_id: int) -> Optional[Book]:
+        """Retrieve a book by its ID."""
+        pass
+
+    @abstractmethod
+    def get_all(self) -> List[Book]:
+        """Retrieve all books."""
+        pass
+
+    @abstractmethod
+    def add(self, book: Book) -> None:
+        """Add a new book."""
+        pass
+
+    @abstractmethod
+    def update(self, book: Book) -> None:
+        """Update an existing book."""
+        pass
+
+    @abstractmethod
+    def delete(self, book_id: int) -> None:
+        """Delete a book by ID."""
+        pass
+
+# --- Concrete Repository Implementation ---
+class InMemoryBookRepository(BookRepository):
     def __init__(self):
-        # In-memory database simulation
-        self._users: dict[int, User] = {}
+        self.books = {}
 
-    def add(self, user: User) -> None:
-        """Add a user to the repository."""
-        self._users[user.user_id] = user
-    
-    def get_by_id(self, user_id: int) -> User:
-        """Retrieve a user by ID. Raises ValueError if not found."""
-        user = self._users.get(user_id)
-        if user is None:
-            raise ValueError(f"User with ID {user_id} not found")
-        return user
-    
-    def list_all(self) -> List[User]:
-        """Return all users"""
-        return list(self._users.values())
-    
+    def get_by_id(self, book_id: int) -> Optional[Book]:
+        return self.books.get(book_id)
 
-# --- Business Logic / Service Layer ---
-class UserService:
-    def __init__(self, repository: UserRepository):
-        self._repository = repository
+    def get_all(self) -> List[Book]:
+        return list(self.books.values())
 
-    def register_user(self, user_id: int, name: str) -> None:
-        user = User(user_id, name)
-        self._repository.add(user)
-    
-    def show_users(self) -> None:
-        for user in self._repository.list_all():
-            print(f"{user.user_id}: {user.name}")
+    def add(self, book: Book) -> None:
+        if book.id in self.books:
+            raise ValueError(f"Book with id {book.id} already exists.")
+        self.books[book.id] = book
 
-# Example usage
-repo = UserRepository()
-service = UserService(repo)
+    def update(self, book: Book) -> None:
+        if book.id not in self.books:
+            raise ValueError(f"Book with id {book.id} not found.")
+        self.books[book.id] = book
 
-service.register_user(1, "Alice")
-service.register_user(2, "Bob")
+    def delete(self, book_id: int) -> None:
+        if book_id not in self.books:
+            raise ValueError(f"Book with id {book_id} not found.")
+        del self.books[book_id]
 
-service.show_users() # Output: 1: Alice | 2: Bob
+# --- Service Layer ---
+class BookService:
+    def __init__(self, repository: BookRepository):
+        self.repository = repository
+
+    def add_book(self, book: Book) -> None:
+        self.repository.add(book)
+
+    def get_book(self, book_id: int) -> Optional[Book]:
+        return self.repository.get_by_id(book_id)
+
+    def list_books(self) -> List[Book]:
+        return self.repository.get_all()
+
+    def update_book(self, book: Book) -> None:
+        self.repository.update(book)
+
+    def delete_book(self, book_id: int) -> None:
+        self.repository.delete(book_id)
+
+# --- Example Usage ---
+if __name__ == "__main__":
+    repo = InMemoryBookRepository()
+    service = BookService(repo)
+
+    # Add books with manually assigned IDs
+    service.add_book(Book(1, "1984", "George Orwell"))
+    service.add_book(Book(2, "Brave New World", "Aldous Huxley"))
+
+    print("Books after adding:")
+    for b in service.list_books():
+        print(b)
+
+    # Update a book
+    service.update_book(Book(1, "Nineteen Eighty-Four", "George Orwell"))
+
+    print("\nBook with ID 1 after update:")
+    print(service.get_book(1))
+
+    # Delete a book
+    service.delete_book(2)
+
+    print("\nBooks after deletion:")
+    for b in service.list_books():
+        print(b)
