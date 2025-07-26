@@ -307,41 +307,78 @@ Use the [MVC Pattern](../mvc_pattern.py) to clearly separate:
 
 ## 📎 Appendix: General Guidelines for Mini-Projects
 
-These mini-projects are designed to help you apply **architectural patterns** in a controlled, lightweight environment. You are encouraged to **simulate realistic scenarios** using simplified tools (such as the terminal, mocks, or in-memory objects), with a focus on the **correct use of the pattern**, not on building full production applications.
+These mini-projects help you apply **architectural patterns** in controlled, lightweight environments. Focus on **correct pattern usage** rather than full production features. Use mocks, CLI, or in-memory data to simulate real scenarios.
+
+---
 
 ## ✅ General Guidelines
 
-* Simulate **realistic problems** without building full systems.
-* You can use **mock or random data** where appropriate.
-* Use **CLI/terminal output** to simulate UI or API behavior.
-* Avoid building full **GUI interfaces**, real network layers, or production-grade databases unless explicitly specified.
-* Prefer **clarity and architecture over feature richness**.
+- Simulate **realistic problems** without building full systems.
+- Use **mock or random data** where appropriate.
+- Use **CLI/terminal output** to simulate UI or API behavior.
+- Avoid building full **GUI**, network layers, or production-grade databases unless explicitly specified.
+- Prioritize **clarity and architecture over feature richness**.
+
+---
+
+## 🔖 Emoji Difficulty Legend
+
+| Emoji | Difficulty Level | Description                |
+|-------|------------------|----------------------------|
+| 🟢     | Easy             | Beginner-friendly           |
+| 🟠     | Medium           | Moderate complexity         |
+| 🔴     | Hard             | Advanced/challenging        |
 
 ---
 
 ## 🗂️ Project-Specific Guidelines
 
-| #  | Project Name                   | Pattern             | Real App? | CLI OK? | Real API/Data? | Notes |
-|----|--------------------------------|----------------------|-----------|---------|----------------|-------|
-| 1  | Configuration Manager          | Singleton            | ❌        | ✔️      | ❌             | Simulate global config access using one class instance. No external services needed. |
-| 2  | Cross-Platform UI Kit          | Composite            | ❌        | ✔️      | ❌             | Simulate UI components like `Button`, `Container`. Use print output to represent rendering. |
-| 3  | File System Tree Viewer        | Composite            | ❌        | ✔️      | ❌             | Simulate folder and file hierarchy. Use text-based tree structure as output. |
-| 4  | Report Generator               | Builder              | ❌        | ✔️      | ❌             | Build reports with different output formats. All generation logic is internal and simulated. |
-| 5  | Transport Factory              | Factory              | ❌        | ✔️      | ❌             | CLI-based transport creation. Emphasis is on flexible object instantiation. |
-| 6  | UI Component Factory           | Abstract Factory     | ❌        | ✔️      | ❌             | Simulate cross-platform widgets. All rendering can be simulated using print/logs. |
-| 7  | Logger System                  | Observer             | ❌        | ✔️      | ❌             | Simulate subjects and observers. Trigger fake logs or events to test reaction. |
-| 8  | Stock Price Tracker            | Observer             | ❌        | ✔️      | ❌             | Use fake or random stock price updates. No need for real-time APIs. |
-| 9  | Blogging Platform (MVC)        | MVC                  | ❌        | ✔️      | ❌             | Simulate controllers and views using functions and print statements. |
-| 10 | User Management System         | Repository           | ❌        | ✔️      | ❌             | Store fake user data in a dict or in-memory store. Emphasis on repository abstraction. |
-| 11 | E-Commerce Checkout            | Service Layer        | ❌        | ✔️      | ❌             | Simulate business logic (tax, discounts). Persistence can be mocked. |
-| 12 | Banking System                 | CQRS                 | ❌        | ✔️      | ❌             | Separate read/write models. No need for real banking logic or storage. |
-| 13 | Order Processing Engine        | Dependency Injection | ❌        | ✔️      | ❌             | Use constructor or method injection. All services should be mocked or in-memory. |
-| 14 | Event Bus for Blogging         | Publish–Subscribe    | ❌        | ✔️      | ❌             | Simulate `PostCreated` or `UserSignedUp` events. Subscribers print messages to simulate response. |
-| 15 | Bank Transfer Processor        | Unit of Work         | ❌        | ✔️      | ❌             | Use in-memory data for accounts. Implement rollback on error without DB. |
-| 16 | Simple Blog (Active Record)    | Active Record        | ✔️ Lite   | ✔️      | Optional       | Use SQLite or a simple fake DB. Each model handles its own CRUD operations. |
+### Creational Patterns
+
+| #  | Project Name              | Pattern           | Difficulty | Est. Time | Real App?                  | Key Outcomes                                                  |
+|----|--------------------------|-------------------|------------|-----------|----------------------------|---------------------------------------------------------------|
+| 1  | Setting Manager App       | Singleton         | 🟢 Easy    | 1–2 hrs   | Fully simulated (single instance in-memory)                  | Global instance control, lazy initialization                   |
+| 2  | Shape Drawing Tool        | Factory           | 🟢 Easy    | 2–3 hrs   | Fully simulated (CLI only)                                    | Factory creation logic, encapsulation of object instantiation  |
+| 3  | Cross-Platform UI Kit     | Abstract Factory  | 🟠 Medium  | 3–4 hrs   | Fully simulated (CLI rendering via prints)                   | Families of related objects, platform-specific components      |
+| 4  | Custom PC Builder         | Builder           | 🟠 Medium  | 3–4 hrs   | Fully simulated (immutable object creation)                  | Stepwise construction, chainable builder methods               |
+
+---
+
+### Structural Patterns
+
+| #  | Project Name              | Pattern           | Difficulty | Est. Time | Real App?                  | Key Outcomes                                                  |
+|----|--------------------------|-------------------|------------|-----------|----------------------------|---------------------------------------------------------------|
+| 5  | Legacy Printer Integration| Adapter           | 🟢 Easy    | 1–2 hrs   | Fully simulated (interface wrapping)                         | Interface compatibility, legacy code integration               |
+| 6  | File System Tree Viewer   | Composite         | 🟠 Medium  | 3–4 hrs   | Fully simulated (hierarchical CLI display)                   | Uniform interface for composite and leaf objects               |
+
+---
+
+### Behavioral Patterns
+
+| #  | Project Name              | Pattern           | Difficulty | Est. Time | Real App?                  | Key Outcomes                                                  |
+|----|--------------------------|-------------------|------------|-----------|----------------------------|---------------------------------------------------------------|
+| 7  | Stock Price Tracker       | Observer          | 🟠 Medium  | 3–4 hrs   | Fully simulated (random/fake data)                           | Loose coupling, dynamic subscription, event notification      |
+
+---
+
+### Architectural Patterns
+
+| #  | Project Name              | Pattern           | Difficulty | Est. Time | Real App?                  | Key Outcomes                                                  |
+|----|--------------------------|-------------------|------------|-----------|----------------------------|---------------------------------------------------------------|
+| 8  | To-Do List App (CLI)      | MVC               | 🟠 Medium  | 3–4 hrs   | Fully simulated (CLI I/O)                                     | Separation of concerns: model, view, controller                |
+| 9  | User Account Management   | Repository        | 🟠 Medium  | 3–4 hrs   | Fully simulated (in-memory data abstraction)                 | Data abstraction, decoupling persistence logic                 |
+| 10 | Online Bookstore Backend  | Service Layer     | 🟠 Medium  | 4–5 hrs   | Fully simulated (mocked persistence and services)            | Encapsulate business logic, maintain thin reusable services    |
+| 11 | Task Management API       | CQRS              | 🟠 Medium  | 4–5 hrs   | Fully simulated (separate read/write handlers)               | Separation of command and query responsibilities               |
+| 12 | Notification System       | Dependency Injection | 🟢 Easy  | 2–3 hrs   | Fully simulated (injected dependencies)                      | Dependency inversion, decoupling hardcoded dependencies        |
+| 13 | E-Commerce Platform Split | Microservices Arch.| 🔴 Hard    | 5–6 hrs   | Fully simulated (separate service boundaries, no shared DB) | Loose coupling, independent deployment, API boundaries        |
+| 14 | Event Bus for Blogging    | Publish–Subscribe  | 🟠 Medium  | 3–4 hrs   | Fully simulated (in-memory event bus)                        | Event-driven design, multiple subscribers                      |
+| 15 | Bank Transaction Processor| Unit of Work      | 🟠 Medium  | 4–5 hrs   | Fully simulated (transaction rollback in-memory)             | Transaction management, atomicity, rollback handling           |
+| 16 | Simple Blogging Platform  | Active Record     | 🟠 Medium  | 4–5 hrs   | Minimal real DB (SQLite local file), otherwise CLI only      | Model-centric persistence, CRUD encapsulation                 |
 
 ---
 
 ## 🔚 Final Note
 
-These projects are educational scaffolds. The primary learning outcome should always be the **correct and thoughtful use of the architectural pattern** — not UI polish, database integration, or external dependencies. That said, feel free to extend them if you're up for a challenge.
+These projects emphasize **correct and thoughtful use of architectural patterns** over UI polish or production readiness. Grouped by pattern category for easier navigation and planning. Prioritize clarity and pattern understanding.
+
+Feel free to extend or deepen them if you want a bigger challenge!
