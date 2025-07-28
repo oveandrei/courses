@@ -313,11 +313,11 @@ These mini-projects help you apply **architectural patterns** in controlled, lig
 
 ## ✅ General Guidelines
 
-- Simulate **realistic problems** without building full systems.
-- Use **mock or random data** where appropriate.
-- Use **CLI/terminal output** to simulate UI or API behavior.
-- Avoid building full **GUI**, network layers, or production-grade databases unless explicitly specified.
-- Prioritize **clarity and architecture over feature richness**.
+* Simulate **realistic problems** without building full systems.
+* Use **mock or random data** where appropriate.
+* Use **CLI/terminal output** to simulate UI or API behavior.
+* Avoid building full **GUI**, network layers, or production-grade databases unless explicitly specified.
+* Prioritize **clarity and architecture over feature richness**.
 
 ---
 
