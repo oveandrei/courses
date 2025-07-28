@@ -2,6 +2,9 @@ from cqrs import CreateTaskCommand, GetOpenTasksQuery
 from db import TasksDatabase
 
 def main_menu():
+    """
+    Prints the main menu options to the user.
+    """
     print("----Main Menu----")
     print("1. Create a Task")
     print("2. Update a Task")
@@ -15,6 +18,9 @@ def main_menu():
 
 
 def main():
+    """
+    Entry point for the CLI task manager using the CQRS pattern.
+    """
     database = TasksDatabase()
     cmd = CreateTaskCommand(database)
     queries = GetOpenTasksQuery(database)
