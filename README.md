@@ -45,3 +45,9 @@ Below there is a list with all the courses that are available in this repository
 1. [Exercises](/python_fundamentals/operators/docs/exercises.md)
 2. [Examples] - *soon*
 3. [Video](https://youtu.be/x65InWASpVw)
+
+#### [Fundamentals - Lists](/python_fundamentals/lists/docs/Python%20Fundamentals_%20Lists.pdf)
+
+1. [Exercises](/python_fundamentals/lists/docs/exercises.md)
+2. [Examples] - *soon*
+3. [Video] - *soon*

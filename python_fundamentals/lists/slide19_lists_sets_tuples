@@ -1,0 +1,13 @@
+# List: ordered, mutable, allows duplicates
+lst = [1, 2, 2]
+lst.append(3)  # Can modify
+print(lst)     # [1, 2, 2, 3]
+
+# Tuple: ordered, immutable, allows duplicates
+tpl = (1, 2, 2)
+# tpl[0] = 10  # Error: cannot modify
+print(tpl)     # (1, 2, 2)
+
+# Set: unordered, unique elements only
+st = {1, 2, 2}
+print(st)      # {1, 2} - duplicates removed

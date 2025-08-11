@@ -1,0 +1,7 @@
+itms = ["apple", "banana", "cherry", 'avocado', 'tomato']
+itms.remove("banana")  # ["apple", "cherry", 'avocado', 'tomato']
+itms.pop()  # ["apple", "cherry", 'avocado']
+del itms[0] # ["cherry", 'avocado']
+itms.clear() # []
+itms = ["apple", "banana", "cherry", 'avocado', 'tomato']
+del itms[0:2] #  ["cherry", 'avocado', 'tomato']
