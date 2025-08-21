@@ -50,4 +50,4 @@ Below there is a list with all the courses that are available in this repository
 
 1. [Exercises](/python_fundamentals/lists/docs/exercises.md)
 2. [Examples] - *soon*
-3. [Video] - *soon*
+3. [Video](https://youtu.be/0pk0n9orz9k)
